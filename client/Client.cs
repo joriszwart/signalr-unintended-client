@@ -4,7 +4,7 @@ var connection = new HubConnectionBuilder()
     .WithUrl("http://localhost:5000")
     .Build();
 
-connection.On<string>("Message", (message) =>
+connection.On<string>("Message", message =>
 {
     Console.WriteLine($"{DateTime.UtcNow} Client {connection.ConnectionId} received message intended for client {message}.");
 });

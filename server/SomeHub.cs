@@ -4,7 +4,9 @@ namespace Server;
 
 public class SomeHub : Hub
 {
-    private static readonly List<string> connections = new();
+    // Note that the hub is instantiated on a per-connection basis,
+    // so a global connection list is needed.
+    private static readonly List<string> Connections = new();
 
     public SomeHub()
     {
@@ -13,10 +15,10 @@ public class SomeHub : Hub
 
     public override async Task OnConnectedAsync()
     {
-        connections.Add(Context.ConnectionId);
-        Console.WriteLine($"{DateTime.UtcNow} Client {Context.ConnectionId} connected (connection count: {connections.Count})");
+        Connections.Add(Context.ConnectionId);
+        Console.WriteLine($"{DateTime.UtcNow} Client {Context.ConnectionId} connected (connection count: {Connections.Count})");
 
-        foreach (var connectionId in connections)
+        foreach (var connectionId in Connections)
         {
             await Clients.Client(connectionId).SendAsync("Message", connectionId);
             Console.WriteLine($"{DateTime.UtcNow} Sent message '{connectionId}' to {connectionId}.");
