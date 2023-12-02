@@ -15,13 +15,13 @@ Run
 Start the server:
 
 ```shell
-dotnet run --project Server
+dotnet run --project server
 ```
 
 Then in another terminal start a client:
 
 ```shell
-dotnet run --project Client
+dotnet run --project client
 ```
 
 For each client that connects, the server will notify all connected clients.
