@@ -6,6 +6,6 @@ var app = builder.Build();
 
 app.MapHub<SomeHub>("");
 
-Console.WriteLine($"{DateTime.UtcNow.ToString("HH:mm:ss.fff")} Server started.");
+Console.WriteLine($"{DateTime.UtcNow} Server started.");
 
 app.Run();

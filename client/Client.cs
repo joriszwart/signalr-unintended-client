@@ -6,10 +6,10 @@ var connection = new HubConnectionBuilder()
 
 connection.On<string>("Message", (message) =>
 {
-    Console.WriteLine($"{DateTime.UtcNow.ToString("HH:mm:ss.fff")} Client {connection.ConnectionId} received message intended for client {message}.");
+    Console.WriteLine($"{DateTime.UtcNow} Client {connection.ConnectionId} received message intended for client {message}.");
 });
 
 await connection.StartAsync();
-Console.WriteLine($"{DateTime.UtcNow.ToString("HH:mm:ss.fff")} Client {connection.ConnectionId} started.");
+Console.WriteLine($"{DateTime.UtcNow} Client {connection.ConnectionId} started.");
 
 Console.ReadLine();
